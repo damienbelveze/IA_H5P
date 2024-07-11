@@ -7,14 +7,16 @@ author:
     affiliation: "Université de Rennes"
 ---
 
-# Introduction
+# générer à partir d'une leçon un quiz formaté pour H5P : une expérimentation à partir de Mistral et RAGaRenn
+
+## Introduction
 
 Avec le développement de l'auto-formation et des cours interactifs en ligne, les enseignants et les personnels dédiés à l'ingénieurie pédagogiques passent de plus en plus de temps à constituer des quiz pour permettre aux étudiants de s'entraîner dans le cadre d'un cours en ligne. Les deux outils privilégiés sont Moodle, un LMS[^1] libre très utilisé dans l'enseignement supérieur français et le format H5P, basé sur l'HTML5, interopérable avec Moodle comme avec d'autres outils libres et qui permet de concevoir des activités pédagogiques de toute sorte et parmi ces activités des questions à choix multiples. 
 Ces tâches de conception prennent du temps, non seulement en conception (concevoir les questions à poser à partir d'un contenu et les retours à envoyer en cas de bonne ou mauvaise réponse), mais aussi en terme de saisie. En effet, les activités h5P se présentent au premier abord sous la forme de templates à compléter, que l'on utilise pour cela un éditeur intégré à Moodle ou bien un éditeur indépendant[^2]. 
 Pour ces deux étapes, le recours à des outils d'intelligence artificielle peuvent permettre d'épargner du temps de conception. Il est évident que les productions des outils d'IA en la matière doivent être revues et assez souvent corrigées ou adaptées par un intervenant humain, mais ces textes générés automatiquement constituent néanmoins une bonne base de départ pour réaliser rapidement des quiz. 
 Lorsqu'en rapport à un document qu'on lui fournir, le RAG[^3] peut produire des questions à choix multiples qui aient du sens, il convient encore que ces questions et les réponses proposées (ainsi que les feedbacks) soient rédigés dans la syntaxe alternative proposée par les éditeurs H5P pour certaines activités. Cette syntaxe légère permet de ne pas avoir à remplir de formulaire, ce qui constitue un gain de temps non négligeable. La question est donc de savoir comment faire en sorte que l'outil d'IA utilisé formate les quiz qu'on lui demande de générer dans la syntaxe demandée. C'est l'objet du travail qui est résumé ici. En revanche, il ne s'agit pas d'évaluer la qualité des questions proposées[^4]
 
-# 1. L'éditeur H5P et le formatage des questions et des réponses
+## 1. L'éditeur H5P et le formatage des questions et des réponses
 
 Les éditeurs d'activités en H5P permettent de réaliser une [variété assez importante d'exercices](https://h5p.org/content-types-and-applications). Certaines de ces activités permettent une édition à travers un formulaire uniquement (c'est le cas de *multiple choice*), d'autres comme l'activité *Question Set* offrent une voie alternative pour la conception : au lieu de passer par le formulaire, il est possible de copier-coller directement du texte faiblement balisé dans le champ principal. Ce texte une fois collé sera parsé et constituera le quiz qui s'affichera à l'étudiant. 
 Ainsi, en prenant l'exemple fourni du nombre pi 
@@ -56,7 +58,7 @@ A noter toutefois que le feedback lié à l'alternative choisie ne s'affiche pas
 
 ![](images/editeur4.png)
 
-# 2. L'usage des outils d'IA pour générer des quiz à partir d'un document.
+## 2. L'usage des outils d'IA pour générer des quiz à partir d'un document.
 
 Dans la catégorie des outils d'intelligence artificielle générative, nous nous intéressons ici à ceux qui peuvent traiter des documents qu'on leur soumet. Ces outils sont dénommés RAG (Retrieval Augmented Generation Tools). Les tests suivants ont été réalisés avec RAGaRenn, l'outil d'IA installé sur le serveur d'un partenaire de l'Université de Rennes.
 Mixtral est le modèle qui a été choisi pour ces tests. RAGaRenn ne dispose pas du modèle utilisé dans Poe pour obtenir le résultat mentionné plus haut (Claude3.5-Sonnet)
@@ -92,9 +94,9 @@ Elles sont plus résistantes aux maladies
 ```
 le [résultat](https://poe.com/s/Qv2dyZ3LtOMPywKDJDcM) est conforme à ce qui a été présenté à Marseille, avec un texte précédent. La syntaxe utilisée est adéquate et permet bien de fabriquer un *question set* avec H5P.
 
-# 3. Obtenir de RAGaRenn qu'il formate les quiz demandés selon la bonne syntaxe
+## 3. Obtenir de RAGaRenn qu'il formate les quiz demandés selon la bonne syntaxe
 
-## 3.2 Utilisation du modèle Mixtral 
+### 3.2 Utilisation du modèle Mixtral 
 
 Poe est un outil commercial et limité dans son usage. Une même personne ne peut pas dépasser un nombre d'inférences par jour sans payer un abonnement.
 Comment réaliser cette même tâche avec un outil local comme RAGaRenn qui n'est pas formellement limité en nombre d'inférences par personne et par jour et ne présente pas le risque de réutilisation des données personnelles (mail) associé à ce type d'outils commerciaux ?
@@ -149,7 +151,7 @@ Les mêmes éléments indésirables revenaient périodiquement dont voici une li
 - Régulièrement les options apparaissent aussi avec des A), B), C), etc.  
 - Régulièrement les questions et leurs options sont dissociées de l'identification de la bonne réponse qui apparaît après la liste des options.  
 
-## 3.3 mémorisation des règles
+### 3.3 mémorisation des règles
 
 Dans le [groupe ARDEL](https://ragarenn.eskemm-numerique.fr/ardel@univren) où je dispose d'un compte d'administrateur et où j'ai ainsi accès à certaines fonctionnalités supplémentaires, j'ai essayé de créer une mémoire de mes instructions à RAGaRenn : 
 
@@ -161,7 +163,7 @@ Par exemple : "génère un QCM H5P quiz sur l'indépendance de l'Inde"
 On créé un nouveau chat à chaque fois.
 Pour simplifier le test, j'ai décidé de ne pas soumettre de texte à RAGaRenn à partir duquel générer les quiz. Les quiz générés sont construits à partir des sources utilisé pour bâtir le modèle.
 
-### question sur l'indépendance indienne
+#### question sur l'indépendance de l'Inde
 
 ```
 Q: Qui est considéré comme le père de la nation indienne?
@@ -176,7 +178,7 @@ L'unification de toutes les régions de l'Inde
 
 -> ajout de deux règles : la question ne doit pas être précédée par aucun caractère + une ligne vide doit séparer les questions 
 
-### question sur El Niño
+#### question sur El Niño
 
 ```
 Qu'est-ce que El Niño?
@@ -194,7 +196,7 @@ uniquement en hiver
 Résultat : les précédentes règles sont respectées mais on constate un nouveau problème : l'astérique se transforme en puce devant la bonne réponse
 -> ajout d'une règle pour empêcher qu'un espace ne vienne s'insérer entre l'astérique et le premier mot de la bonne réponse.
 
-### question sur la cinqième constitution française
+#### question sur la cinqième constitution française
 
 ```
 Question 1:
@@ -215,7 +217,7 @@ Une dictature militaire
 Résultat : plus de puce  mais retour d'un intitulé numérotant la question 
 -> ajout d'une règle prescrivant ce fonctionnement
 
-### question sur la Ceinture de Kuiper
+#### question sur la Ceinture de Kuiper
 
 ```
 
@@ -243,7 +245,7 @@ D) Varuna
 l'intitulé question 1 disparaît mais toutes les autres règles déjà implémentées sont ignorées.
 
 
-# conclusion
+## conclusion
 
 Contrairement au fonctionnement du LLM Claude3.5-Sonnet à travers Poe qui permet facilement et de façon reproductible de générer des quiz dans la syntaxe prévue par le standard h5p, il n'a pas été possible d'obtenir la même chose avec le modèle Mixtral dans RAGaRenn que ce soit avec un compte de particulier ou bien avec un compte d'administrateur en utilisant la fonctionnalité bêta "mémory" qui permet de donner des instrutions à mémoriser au chatbot. 
 
@@ -257,13 +259,13 @@ ________________________________________________________________________________
 [^2]: Comme Logiquiz l'éditeur libre d'activités H5P mis en place par la Digitale
 [^3]: Retrieval Augmented Generation Tool : le propre d'un autil d'IA auquel on peut soumettre un texte ou un ensemble de textes sur lequel baser sa réponse. 
 [^4]: A titre d'exemple d'erreur constatée : 
-```
-What is the correct way to write the number 25 in German?
+
+_What is the correct way to write the number 25 in German?
 zwei und fünf
 *einundzwanzig:::The correct way to write the number 25 in German is "einundzwanzig".
 sieben und achtzehn
-fünf und zwanzig
-```
+fünf und zwanzig_
+
 La bonne réponse est fünfundzwanzig (en un seul mot) et en aucun einundzwanzig (21)
 
-[^5]: H5P. (2023). Using AI to create H5P Content. https://h5p.org/using-ai-to-create-h5p-content
+[^5]: Falcon, H5P. (2023). Using AI to create H5P Content. https://h5p.org/using-ai-to-create-h5p-content
