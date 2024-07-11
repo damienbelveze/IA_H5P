@@ -1,8 +1,10 @@
 ---
 title: générer à partir d'une leçon un quiz formaté pour H5P
-subtitle: les outils d'IA pour faciliter le travail d'ingénieurie pédagogique
+subtitle: les outils d'IA pour faciliter le travail d'ingénierie pédagogique
 date: 11072024
-author: Damien Belvèze
+author:
+    name: "Damien Belvèze"
+    affiliation: "Université de Rennes"
 ---
 
 # Introduction
@@ -10,7 +12,7 @@ author: Damien Belvèze
 Avec le développement de l'auto-formation et des cours interactifs en ligne, les enseignants et les personnels dédiés à l'ingénieurie pédagogiques passent de plus en plus de temps à constituer des quiz pour permettre aux étudiants de s'entraîner dans le cadre d'un cours en ligne. Les deux outils privilégiés sont Moodle, un LMS[^1] libre très utilisé dans l'enseignement supérieur français et le format H5P, basé sur l'HTML5, interopérable avec Moodle comme avec d'autres outils libres et qui permet de concevoir des activités pédagogiques de toute sorte et parmi ces activités des questions à choix multiples. 
 Ces tâches de conception prennent du temps, non seulement en conception (concevoir les questions à poser à partir d'un contenu et les retours à envoyer en cas de bonne ou mauvaise réponse), mais aussi en terme de saisie. En effet, les activités h5P se présentent au premier abord sous la forme de templates à compléter, que l'on utilise pour cela un éditeur intégré à Moodle ou bien un éditeur indépendant[^2]. 
 Pour ces deux étapes, le recours à des outils d'intelligence artificielle peuvent permettre d'épargner du temps de conception. Il est évident que les productions des outils d'IA en la matière doivent être revues et assez souvent corrigées ou adaptées par un intervenant humain, mais ces textes générés automatiquement constituent néanmoins une bonne base de départ pour réaliser rapidement des quiz. 
-Lorsqu'en rapport à un document qu'on lui fournir, le RAG[^3] peut produire des questions à choix multiples qui aient du sens, il convient encore que ces questions et les réponses proposées (ainsi que les feedbacks) soient rédigés dans la syntaxe alternative proposée par les éditeurs H5P pour certaines activités. Cette syntaxe légère permet de ne pas avoir à remplir de formulaire, ce qui constitue un gain de temps non négligeable. La question est donc de savoir comment faire en sorte que l'outil d'IA utilisé formate les quiz qu'on lui demande de générer dans la syntaxe demandée. C'est l'objet du travail qui est résumé ici. 
+Lorsqu'en rapport à un document qu'on lui fournir, le RAG[^3] peut produire des questions à choix multiples qui aient du sens, il convient encore que ces questions et les réponses proposées (ainsi que les feedbacks) soient rédigés dans la syntaxe alternative proposée par les éditeurs H5P pour certaines activités. Cette syntaxe légère permet de ne pas avoir à remplir de formulaire, ce qui constitue un gain de temps non négligeable. La question est donc de savoir comment faire en sorte que l'outil d'IA utilisé formate les quiz qu'on lui demande de générer dans la syntaxe demandée. C'est l'objet du travail qui est résumé ici. En revanche, il ne s'agit pas d'évaluer la qualité des questions proposées[^4]
 
 # 1. L'éditeur H5P et le formatage des questions et des réponses
 
@@ -64,7 +66,7 @@ Ce n'est pas la vidéo elle-même qui a été fournie à l'outil d'IA mais sa tr
 Le document fourni à l'outil d'IA est le transcript en français.
 
 
-Au Moodlemoot de juillet 2024, à Marseille, un intervenant a montré comment générer des *question sets* pour H5P avec l'IA [Poe](https://poe.com) et le modèle Claude3-5.Sonnet.
+Au Moodlemoot de 2023[^5], [Falcon](https://h5p.org/user/2), développeur chez H5P a montré comment générer des *question sets* pour H5P avec ChatGPT et l'IA [Poe](https://poe.com). Pour cette dernière, c'est le modèle Claude3-5.Sonnet qui était utilisé.
 
 En chargeant sur Poe le PDF d'une leçon et en rédigeant le prompt suivant : 
 
@@ -98,17 +100,17 @@ Poe est un outil commercial et limité dans son usage. Une même personne ne peu
 Comment réaliser cette même tâche avec un outil local comme RAGaRenn qui n'est pas formellement limité en nombre d'inférences par personne et par jour et ne présente pas le risque de réutilisation des données personnelles (mail) associé à ce type d'outils commerciaux ?
 Pour utiliser RAGaRenn, j'ai décidé d'utiliser le modèle Mixtral pour l'ensemble des tests.Mixtral 47B est est un modèle de fondation pouvant être comparé avec le modèle Claude dans sa version 3.5. Avec le même prompt que celui fourni par Claude3.5 dans Poe, RAGaRenn fournit un quiz en anglais (le prompt était pourtant rédigé en français) et formaté de la manière suivante : 
 
-Question 1 : texte de la première question
-A\) alternative 1
-B\) alternative 2
-C\) alternative 3
-Question 2 : texte de la seconde question
-A\) alternative 1
+Question 1 : texte de la première question  
+A\) alternative 1  
+B\) alternative 2  
+C\) alternative 3  
+Question 2 : texte de la seconde question  
+A\) alternative 1  
 ...
-Correct answers (with prefix and suffix):
-Question 1: A\)*
-alternative 1 ::: texte du feedback
-Question 2: B\)
+Correct answers (avec préfixe et suffixe):  
+Question 1: A\)*  
+alternative 1 ::: texte du feedback  
+Question 2: B\)  
 
 De même que Claude3.5 dans Poe était paramétré pour générer des quiz dans lesquels la première alternative était toujours la bonne (ce qui avait nécessité l'inclusion d'une phrase lui indiquant que cet ordre devait être aléatoire), de même, par défaut, Mixtral génère du texte qui sépare la question et ses options de réponse de la définition de la bonne réponse. Par ailleurs, le résultat est systématiquement formulé en anglais, et des préfixes non souhaités viennent s'ajouter aux questions et aux réponses (cf. **Question 1**, **Question 2** / **A)** alternative 1, **B)** alternative 2,etc.)
 
@@ -142,10 +144,10 @@ Ce prompt a permis d'obtenir un [résultat conforme](chat/intégrité.txt) avec 
 Ce résultat n'a pas pu être reproduit avec le même prompt mais basé sur d'autres documents.
 Les mêmes éléments indésirables revenaient périodiquement dont voici une liste non exhaustive : 
 
-- une mention question 1, question 2, question 3, etc. occupent la ligne vide entre chaque question
-- l'astérique devant la bonne réponse est suivie d'un espace indésirable, ce qui fait qu'elle est interprété comme une puce. Les options sont présentées comme une liste à puce. La bonne option n'est pas précédée mais suivie d'un astérique.
-- Régulièrement les options apparaissent aussi avec des A), B), C), etc.
-- Régulièrement les questions et leurs options sont dissociées de l'identification de la bonne réponse qui apparaît après la liste des options. 
+- une mention question 1, question 2, question 3, etc. occupent la ligne vide entre chaque question  
+- l'astérique devant la bonne réponse est suivie d'un espace indésirable, ce qui fait qu'elle est interprété comme une puce. Les options sont présentées comme une liste à puce. La bonne option n'est pas précédée mais suivie d'un astérique.  
+- Régulièrement les options apparaissent aussi avec des A), B), C), etc.  
+- Régulièrement les questions et leurs options sont dissociées de l'identification de la bonne réponse qui apparaît après la liste des options.  
 
 ## 3.3 mémorisation des règles
 
@@ -245,23 +247,23 @@ l'intitulé question 1 disparaît mais toutes les autres règles déjà impléme
 
 Contrairement au fonctionnement du LLM Claude3.5-Sonnet à travers Poe qui permet facilement et de façon reproductible de générer des quiz dans la syntaxe prévue par le standard h5p, il n'a pas été possible d'obtenir la même chose avec le modèle Mixtral dans RAGaRenn que ce soit avec un compte de particulier ou bien avec un compte d'administrateur en utilisant la fonctionnalité bêta "mémory" qui permet de donner des instrutions à mémoriser au chatbot. 
 
+Point méthodologique à souligner : la conservation des prompts et des résultats dans RAGaRenn et leur export (en format texte ou PDF) n'est pas des plus aisées. L'usage d'un carnet computationnel type Jupyter Notebooks en lien avec l'API de RAGaRenn qui permettrait d'interroger l'outil d'IA dans ce carnet permettrait de faire plus facilement référence aux résultats obtenus. 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+___________________________________________________________________________________
 
 [^1]: Moodle appartient à la famille des LMS (Learning Management Systems)
 [^2]: Comme Logiquiz l'éditeur libre d'activités H5P mis en place par la Digitale
+[^3]: Retrieval Augmented Generation Tool : le propre d'un autil d'IA auquel on peut soumettre un texte ou un ensemble de textes sur lequel baser sa réponse. 
+[^4]: A titre d'exemple d'erreur constatée : 
+```
+What is the correct way to write the number 25 in German?
+zwei und fünf
+*einundzwanzig:::The correct way to write the number 25 in German is "einundzwanzig".
+sieben und achtzehn
+fünf und zwanzig
+```
+La bonne réponse est fünfundzwanzig (en un seul mot) et en aucun einundzwanzig (21)
+
+[^5]: H5P. (2023). Using AI to create H5P Content. https://h5p.org/using-ai-to-create-h5p-content
