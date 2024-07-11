@@ -258,14 +258,11 @@ ________________________________________________________________________________
 [^1]: Moodle appartient à la famille des LMS (Learning Management Systems)
 [^2]: Comme Logiquiz l'éditeur libre d'activités H5P mis en place par la Digitale
 [^3]: Retrieval Augmented Generation Tool : le propre d'un autil d'IA auquel on peut soumettre un texte ou un ensemble de textes sur lequel baser sa réponse. 
-[^4]: A titre d'exemple d'erreur constatée : 
-
-_What is the correct way to write the number 25 in German?
+[^4]: A titre d'exemple d'erreur constatée : "_What is the correct way to write the number 25 in German?
 zwei und fünf
 *einundzwanzig:::The correct way to write the number 25 in German is "einundzwanzig".
 sieben und achtzehn
-fünf und zwanzig_
-
+fünf und zwanzig_"
 La bonne réponse est fünfundzwanzig (en un seul mot) et en aucun einundzwanzig (21)
 
 [^5]: Falcon, H5P. (2023). Using AI to create H5P Content. https://h5p.org/using-ai-to-create-h5p-content
