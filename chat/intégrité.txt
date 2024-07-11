@@ -1,0 +1,37 @@
+### USER
+un quiz H5P est formaté de la manière suivante : 
+
+la première ligne est une question
+la seconde est une réponse proposée
+la troisième et les deux suivantes sont d'autres réponses proposées. 
+la bonne réponse est précédée de *
+la bonne réponse n'est pas forcément la première, cela peut-être n'importe laquelle
+il peut y avoir jusqu'à six options différentes
+la bonne réponse est assortie d'un feedback donnant des informations complémentaires. la bonne option de réponse est séparée du feedback par :::
+
+Voici un exemple : 
+
+Comment est mort Jules César?
+victime d'un accident
+mort d'une insolation
+*mort assassiné:::il a été assassiné par des sénateurs conjurés parmi lesquels se trouvaient son fils adoptif Brutus
+
+A partir de ce document, génère 4 questions à choix multiples dans ce format. Tout le texte généré doit être en français
+
+### ASSISTANT
+ Quelle est la conséquence d'une anomalie de la rétine identifiée chez les poules en 1978 ?
+Les poules atteintes de cette anomalie deviennent agressives et plumées par leurs congénères.
+*Les poules atteintes de cette anomalie sont devenues moins agressives et consomment moins d'aliments:::Une étude a montré que les poules aveugles étaient moins agressives envers leurs congénères et avaient une consommation d'aliments réduite grâce à cette mutation génétique naturelle.
+
+Quels sont les effets du stress sur les glandes des poules ?
+Le stress entraîne une augmentation de la taille des glandes.
+*Le stress n'entraîne pas de changement significatif dans la taille des glandes:::Des études ont montré que le stress n'avait pas d'impact significatif sur la taille des glandes chez les poules.
+
+Quel est l'impact du cannibalisme chez les poules élevées en batterie ?
+Le cannibalisme entraîne une diminution de la production d'œufs.
+*Le cannibalisme entraîne des conséquences tragiques, telles que la mort de certaines poules:::Les poules éviscérées sont souvent la conséquence tragique du cannibalisme chez les poules élevées en batterie.
+
+Quels sont les avantages de l'élevage en batterie pour les poules ?
+L'élevage en batterie permet aux poules d'avoir plus d'espace pour se déplacer.
+*L'élevage en batterie n'offre pas beaucoup d'espace aux poules pour se déplacer:::Les poules élevées en batterie sont souvent entassées dans de petites cages, ce qui peut entraîner des problèmes de comportement tels que l'agressivité et le cannibalisme.
+

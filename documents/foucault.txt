@@ -1,0 +1,120 @@
+### USER
+Agis comme un enseignant qui créer un QCM dans Moodle. Ce QCM doit être composé de 3 questions avec 4 réponses alternatives. Le QCM ne prendra en compte que le document joint.  
+Le QCM doit respecter les conditions suivantes :  
+La bonne réponse devra apparaître aléatoirement parmi les autres  
+La bonne réponse aura pour prefixe *  
+La bonne réponse aura pour suffixe ::: et une explication issu du document  
+Toutes les réponses n’auront aucun numéro ni autre format  
+Aucune ligne vide entre les questions et les réponses
+
+### ASSISTANT
+ Question 1: What are the three modalities of accessing health data for research purposes in France?
+
+A) Internal research, Procedure simplified, and Classical procedure
+B) Data analysis, Statistical modeling, and Machine learning
+C) Healthcare services, Medical equipment, and Pharmaceuticals
+D) Epidemiology, Genomics, and Public health
+
+Question 2: Who is responsible for determining the applicable procedure for a research project involving personal data?
+
+A) The head of the research department
+B) The sponsor of the research project
+C) The data protection officer
+D) The person in charge of the project (responsible for processing)
+
+Question 3: Which document must be consulted if you need more information about characterizing your research or identifying the applicable procedure?
+
+A) CNIL's website
+B) The guide on formalities in the context of theses and memoirs
+C) The forum d'entraide
+D) The legal framework for medical research
+
+Correct answers (with prefix and suffix):
+
+Question 1: A)*
+Explanation: There are three modalities of accessing health data for research purposes in France: Internal research (*), Procedure simplified (*::: which can be used when certain conditions are met, as stated by the texts), and Classical procedure (*::: requiring CNIL's authorization).
+
+Question 2: D)*
+Explanation: The person in charge of the project (responsible for processing) *::~ determines the applicable procedure for their research project.
+
+Question 3: B)*
+Explanation: If you need more information about characterizing your research or identifying the applicable procedure, you can consult CNIL's site or study the fiches thématiques of the CNIL on formalities in the context of theses and memoirs (*::: which provide relevant information).
+
+### USER
+refais la même chose, mais cette fois en écrivant les questions et les réponses en anglais et en ne séparant pas les questions et les réponses. Par exemple, pour la première question, le résultat attendu est : 
+
+### ASSISTANT
+ Question 1: Does my project involve research involving human subjects or not? The same project may have different procedures depending on whether it is a research involving human subjects (RIPH) or a research not involving human subjects (RNIPH).
+A) Research involving human subjects (RIPH)
+B) Research not involving human subjects (RNIPH)
+C) Procedure simplified
+D) Classical procedure requiring CNIL's authorization
+
+Question 2: Is my project eligible for a procedure that doesn't require CNIL's authorization?
+A) Yes, if it meets specific conditions
+B) No, it requires CNIL's authorization
+C) Depends on the research type
+D) Not applicable
+
+Correct answers (with prefix and suffix):
+
+Question 1: A)*
+Explanation: The same project may have different procedures depending on whether it is a research involving human subjects (RIPH) or a research not involving human subjects (RNIPH). In this case, choosing RIPH (*) as an answer indicates that the project involves human subjects and thus requires additional steps.
+
+Question 2: A)*
+Explanation: The correct answer is "Yes" if your project meets specific conditions (*), but you need to consult relevant resources or experts for further information about these conditions.
+
+### USER
+refais la même chose, mais cette fois en écrivant les questions et les réponses en anglais et en ne séparant pas les questions et les réponses. Par exemple, pour la première question, le résultat attendu est : 
+
+Question 1: Est-ce que mon projet implique la personne humaine ou pas ?  un même projet peut suivre différentes procédures qui sont liées à cette question : la recherche implique la personne humaine (RIPH) ou elle n'implique pas la personne humaine (RNIPH).
+Research involving human subjects (RIPH)
+*Research not involving human subjects (RNIPH) :::pas besoin d'étude d'impact
+Procedure simplified
+Classical procedure requiring CNIL's authorization 
+
+
+### ASSISTANT
+ Question 1: Does my project involve research involving human subjects or not? The answer to this question will determine the procedures for your project: Research involving human subjects (RIPH) or Research not involving human subjects (RNIPH).
+A) RIPH - Research involving human subjects
+B) RNIPH - Research not involving human subjects (*)
+C) Simplified procedure
+D) Classical procedure requiring CNIL's authorization
+
+Question 2: Is my project eligible for a procedure that doesn't require CNIL's authorization? Prerequisite: I can identify if my project is a research involving human subjects (RIPH) or not.
+A) Yes, if it meets specific conditions (*)
+B) No, it requires CNIL's authorization
+C) Depends on the type of research
+D) Not applicable
+
+Correct answers with prefix and suffix:
+
+Question 1: B)*
+Explanation: The answer to this question will determine the procedures for your project. Choosing "Research not involving human subjects" (*) as an answer indicates that your project does not involve human subjects, requiring fewer steps in the process.
+
+Question 2: A)*
+Explanation: If your project meets specific conditions (*), then it is eligible for a procedure that doesn't require CNIL's authorization; otherwise, the project would need authorization from the CNIL.
+
+### USER
+fais la même chose, mais cette fois en écrivant en français et en mettant l'étoile (*) avant la bonne réponse
+
+### ASSISTANT
+ Question 1: Characterize your project: Does your project involve research involving human subjects (RIPH), or not?
+A) RIPH - Research involving human subjects
+B) RNIPH - Research not involving human subjects (*)
+C) Simplified procedure
+D) Classical procedure requiring CNIL's authorization
+
+Question 2: Is your project eligible for a simplified procedure that doesn't require CNIL's authorization? Prerequisite: You can identify if your project is a research involving human subjects (RIPH) or not.
+A) Yes, if it meets specific conditions (*)
+B) No, it requires CNIL's authorization
+C) Depends on the type of research
+D) Not applicable
+
+Answers:
+Question 1: B)
+Explanation: Choosing "Research not involving human subjects" (RIPH) as an answer indicates that your project does not involve human subjects, which can result in fewer steps for approval.
+
+Question 2: A)
+Explanation: If eligible, this option means you can proceed without obtaining CNIL authorization according to specific conditions (*).
+
